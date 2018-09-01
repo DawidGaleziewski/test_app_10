@@ -1,16 +1,44 @@
-<%= form_for @article do |article| %>
+<%= render 'shared/errors', obj: @article %>
+  <div class = 'row'>
+    <div class = 'col-xs-12 col-xs-offset-2'>
+
+      <%= form_for(@article, :html => {class: 'form-horizontal', role: 'form'}) do |article| %>
  
-  <p>
-    <%= article.label :title %>
-    <%=article.text_field :title %>
-  </p> 
-  
-  <p>
-    <%= article.label :description %>
-    <%= article.text_area :description %>
-  </p>
-  
-  <p> 
-    <%= article.submit %>
-  </p>
-<% end %>
+<div class = 'form-custom'>
+      
+      <div class = 'form-group'>
+        <div class = 'control-label col-sm-2'>
+          <%= article.label :title %>
+        </div>
+        
+        <div class = 'col-sm-4'>
+           <%=article.text_field :title, class: 'form-control', autofocus: true, placeholder: 'Your articles title' %>
+        </div>
+        
+      </div>
+      
+      <div class = 'form-group'>
+        
+        <div class= 'control-label col-sm-2'>
+           <%= article.label :description %>
+        </div>
+        
+        <div class= 'col-sm-4'>
+          <%= article.text_area :description, class: 'form-control', rows: 10, placeholder: 'Your articles description' %>
+        </div>
+        
+      </div>
+      
+      <div class = 'form-group'>
+        <div class = 'col-sm-2 col-sm-offset-3'>
+           <%= article.submit class: 'btn btn-primary btn-lg', id: 'custom-btn' %>
+         </div>
+      </div>
+      
+</div>      
+
+
+    <% end %>
+
+    </div>
+  </div>

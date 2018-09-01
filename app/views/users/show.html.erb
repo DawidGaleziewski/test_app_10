@@ -1,3 +1,7 @@
-<h1>Show user</h1>
+<h1 align = 'center'><%= @user.username %>'s profile</h1>
 
-<%= @user.username %>
+
+<h4 align = 'center'><%= @user.username %> articles:</h4>
+
+<%= render 'shared/articles_listing', obj: @user.articles %>
+
