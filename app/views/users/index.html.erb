@@ -1,22 +1,31 @@
 <h1 align = "center"> All our users</h1>
 
-<% @users.each do |user| %>
-<div class = 'users-custom'>
- <div class = 'row'>
-  <div class = 'col-xs-6 col-xs-offset-3'>
-    <div class = 'well well-lg'>
-     <ul>
-      <li>
-       <%= link_to user.username, user_path(user) %>
-      </li>
-      <li>
-       Gravatar placeholder
-      </li>
-     </ul>
+<div align = 'center'>
+ 
+ <%= will_paginate %>
+ 
+   <% @users.each do |user| %>
+   <div class = 'users-custom'>
+    <div class = 'row'>
+     <div class = 'col-xs-6 col-xs-offset-3'>
+       <div class = 'well well-lg'>
+        <ul>
+         <li>
+          <%= link_to user.username, user_path(user) %>
+         </li>
+         <li>
+          <%= link_to gravatar_for(user), user_path(user) %>
+         </li>
+        </ul>
+       </div>
+     </div>
     </div>
-  </div>
- </div>
+   </div>
+ 
+  <% end %>
+ 
+ <%= will_paginate %>
+
 </div>
-<% end %>
 
 
