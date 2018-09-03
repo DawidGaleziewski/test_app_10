@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: [:edit, :update, :show, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def index
     @articles = Article.paginate(page: params[:page], per_page: 3)
@@ -9,7 +12,7 @@ class ArticlesController < ApplicationController
   end
   
   def create
-    @article = Article.new(article_params)
+
     @article.user = User.first
     
     if @article.save
@@ -22,11 +25,11 @@ class ArticlesController < ApplicationController
   end
   
   def edit
-    @article = Article.find(params[:id])
+
   end
   
   def update
-    @article = Article.find(params[:id])
+
     
     if @article.update(article_params)
       redirect_to article_path(@article)
@@ -37,11 +40,10 @@ class ArticlesController < ApplicationController
   end
   
   def show 
-    @article = Article.find(params[:id]) #finish show!
+
   end
   
   def destroy
-    @article = Article.find(params[:id])
     
     if @article.destroy
       redirect_to articles_path
@@ -55,6 +57,10 @@ class ArticlesController < ApplicationController
   
   def article_params
     params.require(:article).permit(:title, :description)
+  end
+  
+  def set_article
+    @article = Article.find(params[:id])
   end
   
 end
