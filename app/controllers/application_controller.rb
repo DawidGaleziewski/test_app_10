@@ -21,9 +21,7 @@ class ApplicationController < ActionController::Base
   end
   
   def require_same_user
-    #we put this below so require_user executed and we know  current_user won't blow up
-    #we know also set_article has executed above so @article.user won't blow up
-    if current_user != @article.user
+    if current_user != @article.user and !current_user.admin?
       flash[:danger] = 'You can only edit or delete your own article'
       redirect_to root_path
     end

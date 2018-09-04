@@ -12,7 +12,7 @@
      </div>
    <hr>
  
-   <% if logged_in? && current_user == @article.user %>
+   <% if logged_in? && (current_user == @article.user || current_user.admin?) %>
      <div class = 'btn-container'>
        <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-success' %>
        <%= link_to 'Delete', article_path(@article), method: :delete, class: 'btn btn-danger' %>
