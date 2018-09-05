@@ -25,8 +25,12 @@
          
        <hr>
        <div class = 'custom-article-body'>
-         <p> Created by: <%= article.user.username %></p>
-    
+         <p> 
+          Created by: <%= link_to article.user.username, user_path(article.user) %>, 
+           creted at: <%=article.created_at %>, 
+          updated at: <%= article.updated_at %> 
+         </p>
+         
        </div>
        
         
