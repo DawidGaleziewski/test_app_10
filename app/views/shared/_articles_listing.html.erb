@@ -8,6 +8,7 @@
          <%= article.title %>
        </div>
        
+       
        <div class = 'custom-article-body'>
          <%= truncate(article.description, length: 10) %>
        </div>
@@ -21,7 +22,14 @@
             <%= link_to 'Delete', article_path(article), method: :delete, class: 'btn btn-danger' %>
            <% end %>
          </div>
+         
+       <hr>
+       <div class = 'custom-article-body'>
+         <p> Created by: <%= article.user.username %></p>
+    
+       </div>
        
+        
      </div>
    </div>
  </div>
